@@ -1,0 +1,132 @@
+## 计算机的组成和功能
+-----------------
+&ensp;&ensp;&ensp;&ensp;计算机的硬件是由控制器、运算器、寄存器和I/O设备组成的，除硬件之外还有在硬件之上运行的软件。 控制器和运算器集成在CPU中，负责控制指令和各种算数运算、逻辑运算。 寄存器负责存储需要处理的数据，它包括CPU的缓存和内存，速度很快。 I/O设备包括磁盘（输入输出数据均有）、键盘（标准输入）、显示器（标准输出）、网络设备（输入输出数据均有）等。 软件包括操作系统和各种应用软件，通过他们调动硬件实现各种需求。
+
+## Linux的主流发行版本
+----------
+&ensp;&ensp;&ensp;&ensp; Linux经过了多年的发展，已经有了不下300个发行版本。其中按照发展历程有3个大的分支：
+
+ 1. Debian — 一个历史悠久的Linux发行版分支系列。著名的Ubuntu发行版就是基于Debian开发的。
+
+ 2. Slackware — 著名的S.u.S.E及其后续衍生版本openSUSE都是基于Slackware开发的。
+Redhat — 红帽系列，著名的商业发行版本。Redhat公司官方出品的商业版RHEL（Red Hat Enterprise Linux）以及开源版本Fedora、CentOS都是基于Redhat这个Linux发行版分支开发的。
+
+ 3. Redhat — 红帽系列，著名的商业发行版本。Redhat公司官方出品的商业版RHEL（Red Hat Enterprise Linux）以及开源版本Fedora、CentOS都是基于Redhat这个Linux发行版分支开发的。
+
+ [www.Debian.com](http://r.photo.store.qq.com/psb?/V13C1WRl4PGIIX/rTixa9nj0.k4MgTC8.4PsFhqXPgq*SAmu.3paif5JDE!/r/dPMAAAAAAAAA)
+
+
+## Linux的哲学思想
+------
+
+1. 一切皆文件。包括目录甚至硬件设备在Linux系统中都是以文件方式保存并管理使用的。
+2. Linux系统由众多的单一小程序组成。这是由于Linux的发展是Linus Torvalds开发的内核加上开源组织GNU的各种简洁的小应用程序叠加组成并不断迭代的历程。
+3. 整合各种小程序完成复杂任务。复杂任务也是由各种简洁高效的小程序优化组合完成，保证了效率。
+4. 尽量避免与用户的交互，方便利用脚本自动顺利的完成任务。
+5. 配置文件通过文本形式保存，方便编辑使用和管理。
+
+## Linux常用命令及使用格式
+----------
+&ensp;&ensp;&ensp;&ensp;常用的命令使用格式是： 命令 + 参数 + 作用对象 command [option]… argument…
+
+&ensp;&ensp;&ensp;&ensp;常用的命令有：
+
+* ifconfig命令：查看主机网络信息（如IP地址等）
+* echo命令：输出其作用对象的内容
+1. echo “chr”直接输出字符串
+2. echo “$varname”输出变量的值
+* tty命令：查看当前使用的终端的文件名称
+* startx命令：启动Xwindow图形界面
+* export命令：可以用来定义环境变量
+1. export执行后显示当前shell的环境变量信息
+2. export varname定义一个环境变量
+* pwd命令：显示当前工作目录
+* history命令：显示命令历史
+1. history执行后可以直接显示出命令历史信息
+2. 与之相关的文件为~/.bash_history
+3. 与之相关的变量有HISTSIZE(定义缓存命令的条数)和HISTFILESIZE(定义历史命令文件保存的命令条数)
+4. history # 显示最近的#条历史命令
+5. !# 执行历史命令中第#条命令
+6. history -c 清空历史命令缓存
+7. history -a 将历史命令缓存写入历史命令文件
+8. history -r 将历史命令文件的内容读入缓存
+9. history -d # 删除历史命令中第#条命令
+* shutdown命令：实现关机、重启等操作
+1. shutdown -h time(可选) 关机，如果加时间hh:mm表示在相应的时间点关机
+2. shutdown -r time(可选) 将计算机重启，如果加时间hh:mm表示在相应的时间点重启
+3. shutdown -c 取消关机
+4. shutdown -t # 表示经过#秒执行关机操作，可以与其他参数结合使用
+5. shutdown -k 并不是真正关机，而是通知用户关机的消息，可以加时间参数和消息来控制通知信息的内容
+6. shutdown -f 重新启动计算机时忽略fsck
+7. shutdown -F 重新启动计算机时强迫执行fsck
+* poweroff命令 实现直接关机
+* reboot命令 重启计算机
+* hwclock命令 显示和设定硬件时间（即主板BIOS保存的时间）
+1. hwclock 执行直接显示硬件日期及时间
+2. hwclock -s 以硬件时间来修改系统时间
+3. hwclock -w 以系统时间来修改硬件时间
+* date命令 显示和设定系统时间
+1. date 执行直接显示当前系统日期和时间
+2. date +%Y%m%d %H:%M.%S 以指定格式显示当前日期时间：执行结果20180923 18:28.02
+3. date -s “20180923 18:28.02” 将时间设定为2018年09月23日18点28分02秒
+## 如何获取命令帮助
+--------------------
+&ensp;&ensp;&ensp;&ensp;内部命令：获取帮助使用
+
+* help command
+
+外&ensp;&ensp;&ensp;&ensp;部命令：获取帮助使用
+
+* command –help
+* man command
+
+&ensp;&ensp;&ensp;&ensp; man帮助的使用，根据命令类型不同分为9个章节：
+
+1. 用户命令
+2. 系统调用命令
+3. 库函数
+4. 设备文件和特殊文件
+5. 配置文件和某些文件格式
+6. 游戏
+7. 杂项
+8. 管理命令
+9. 其他
+## Linux文件系统的目录组成
+---------
+    Linux的FHS(Filesystem Hierarchy Standard)文件系统结构标准
+
+    /boot: 系统启动所需的文件和bootloader文件所外的路径
+
+    /bin：通常为系统自身启动和运行时使用的可执行文件及命令所在路径
+
+    /sbin：通常为系统自身管理类命令和可执行文件所在路径
+
+    /home：用户的家目录所在路径，通常为/home/username
+
+    /root：管理员的专用家目录
+
+    /lib：共享库文件目录
+
+    /lib64：64位系统共享库文件目录
+
+    /etc：配置文件目录
+
+    /dev：设备文件及特殊文件目录
+
+    /srv：服务类程序需要用到的文件目录
+
+    /opt：第三方应用程序文件目录（通常为非重要）
+
+    /mnt：临时文件系统挂载点
+
+    /media：通常用于挂在媒体文件设备，如u盘，光盘
+
+    /tmp：临时文件所在的目录
+
+    /proc：内核和运行进程的映射文件所在目录，其下的文件运行在内存中
+
+    /sys：内核中的硬件设备映射文件所在目录，与/proc相似也运行在内存中
+
+    /usr：unix software resource. 用户安装应用程序目录，其下还有一套文件系统结构
+    
+    /var：保存经常需要变化的数据文件（如各种变量），其下还有一套文件系统结构
